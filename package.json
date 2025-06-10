@@ -62,12 +62,12 @@
   "resolutions": {
     "unimport": "4.1.1"
   },
-  "lint-staged": {
-    "*.ts": "eslint ."
-  },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
     ]
+  },
+  "lint-staged": {
+    "*.ts": "eslint ."
   }
 }
