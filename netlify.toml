@@ -1,5 +1,5 @@
 [build]
-  command = "NODE_OPTIONS='--max-old-space-size=4096' pnpm install && NODE_OPTIONS='--max-old-space-size=4096' pnpm build --filter @nextorders/essence"
+  command = "pnpm install && pnpm build --filter @nextorders/essence"
   publish = "apps/essence/.output/public"
   base = "."
 
@@ -32,7 +32,7 @@
 [functions]
   directory = "apps/essence/.output/server"
   node_bundler = "esbuild"
-  external_node_modules = ["@nuxt/nitro", "h3", "ofetch", "unstorage", "firebase-admin"]
+  external_node_modules = ["@nuxt/nitro", "h3", "ofetch", "unstorage", "firebase-admin", "@nuxt/ui"]
   included_files = ["apps/essence/.output/server/**/*"]
 
 [dev]
