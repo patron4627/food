@@ -10,6 +10,7 @@ export default antfu(
       'antfu/consistent-list-newline': 'off',
       'ts/consistent-type-definitions': 'off',
       'no-undef': 'off',
+      'node/prefer-global/process': 'off',
       'vue/block-order': ['error', {
         order: ['template', 'script', 'style'],
       }],
