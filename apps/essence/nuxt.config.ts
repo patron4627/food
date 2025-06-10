@@ -65,6 +65,12 @@ export default defineNuxtConfig({
         },
       },
       chunkSizeWarningLimit: 1000,
+      target: 'esnext',
+      minify: 'terser',
+      commonjsOptions: {
+        transformMixedEsModules: true,
+        include: [/node_modules/],
+      },
     },
     optimizeDeps: {
       include: [
@@ -76,6 +82,16 @@ export default defineNuxtConfig({
         '@vueuse/core',
         '@vueuse/nuxt',
       ],
+      exclude: ['fsevents'],
+    },
+    ssr: {
+      noExternal: ['@nuxt/ui'],
+    },
+    resolve: {
+      dedupe: ['vue'],
+      alias: {
+        vue: 'vue/dist/vue.esm-bundler.js',
+      },
     },
   },
   nitro: {
@@ -83,6 +99,20 @@ export default defineNuxtConfig({
       '/**': { isr: false },
     },
     compressPublicAssets: true,
+    minify: true,
+    preset: 'node-server',
+    esbuild: {
+      options: {
+        target: 'esnext',
+      },
+    },
+  },
+  experimental: {
+    payloadExtraction: false,
+    renderJsonPayloads: true,
+    asyncContext: true,
+    treeshakeClientOnly: true,
+    componentIslands: true,
   },
   compatibilityDate: '2025-02-20',
 })

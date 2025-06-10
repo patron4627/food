@@ -1,12 +1,3 @@
-import { dirname, join } from 'node:path'
-import { fileURLToPath } from 'node:url'
-
-function resolvePath(path: string) {
-  const currentDir = dirname(fileURLToPath(import.meta.url))
-
-  return join(currentDir, path)
-}
-
 export default defineNuxtConfig({
   modules: [
     '@nuxt/ui',
@@ -29,7 +20,7 @@ export default defineNuxtConfig({
   i18n: {
     langDir: 'locales',
     defaultLocale: 'en',
-    vueI18n: resolvePath('./i18n/vue-i18n.options.ts'),
+    vueI18n: './i18n/vue-i18n.options.ts',
     experimental: {
       autoImportTranslationFunctions: true,
     },
@@ -45,7 +36,7 @@ export default defineNuxtConfig({
       optimizeTranslationDirective: false,
     },
   },
-  css: [resolvePath('./app/assets/css/main.css')],
+  css: ['./app/assets/css/main.css'],
   ui: {
     colorMode: true,
     fonts: true,
@@ -68,7 +59,7 @@ export default defineNuxtConfig({
   },
   icon: {
     customCollections: [
-      { prefix: 'nextorders', dir: resolvePath('./app/assets/icons') },
+      { prefix: 'nextorders', dir: './app/assets/icons' },
     ],
     clientBundle: {
       scan: {
