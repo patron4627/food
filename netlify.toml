@@ -1,6 +1,6 @@
 [build]
   command = "pnpm build --filter @nextorders/essence"
-  publish = "apps/essence/.output/public"
+  publish = ".output/public"
   base = "apps/essence"
 
 [build.environment]
@@ -28,10 +28,10 @@
   force = true
 
 [functions]
-  directory = "apps/essence/.output/server"
+  directory = ".output/server"
   node_bundler = "esbuild"
   external_node_modules = ["@nuxt/nitro", "h3", "ofetch", "unstorage", "firebase-admin"]
-  included_files = ["apps/essence/.output/server/**/*"]
+  included_files = [".output/server/**/*"]
 
 [dev]
   command = "pnpm dev --filter @nextorders/essence"
