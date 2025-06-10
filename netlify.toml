@@ -44,7 +44,9 @@
     "@nuxtjs/i18n",
     "vue",
     "vue-router",
-    "pinia"
+    "pinia",
+    "@vueuse/core",
+    "@vueuse/nuxt"
   ]
   included_files = ["apps/essence/.output/server/**/*"]
 
