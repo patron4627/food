@@ -49,5 +49,40 @@ export default defineNuxtConfig({
       },
     },
   },
+  vite: {
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'vue-vendor': ['vue', 'vue-router', 'pinia'],
+            'ui-vendor': ['@nuxt/ui', '@nuxtjs/i18n'],
+            'firebase': ['firebase', 'firebase-admin'],
+            'utils': ['@vueuse/core', '@vueuse/nuxt', 'h3', 'ofetch'],
+          },
+          chunkFileNames: 'js/[name]-[hash].js',
+          entryFileNames: 'js/[name]-[hash].js',
+          assetFileNames: 'assets/[name]-[hash].[ext]',
+        },
+      },
+      chunkSizeWarningLimit: 1000,
+    },
+    optimizeDeps: {
+      include: [
+        'vue',
+        'vue-router',
+        'pinia',
+        '@nuxt/ui',
+        '@nuxtjs/i18n',
+        '@vueuse/core',
+        '@vueuse/nuxt',
+      ],
+    },
+  },
+  nitro: {
+    routeRules: {
+      '/**': { isr: false },
+    },
+    compressPublicAssets: true,
+  },
   compatibilityDate: '2025-02-20',
 })
