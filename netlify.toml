@@ -1,56 +1,56 @@
 [build]
-  command = "pnpm install --no-frozen-lockfile && NODE_ENV=production DEBUG=nuxt:* pnpm build --filter @nextorders/essence"
-  publish = "apps/essence/.output/public"
-  base = "."
+command = "pnpm install --no-frozen-lockfile && NODE_ENV=production DEBUG=nuxt:* pnpm build --filter @nextorders/essence"
+publish = "apps/essence/.output/public"
+base = "."
 
 [build.environment]
-  NODE_VERSION = "22.15.0"
-  PNPM_VERSION = "10.10.0"
-  NPM_FLAGS = "--no-frozen-lockfile"
-  NODE_OPTIONS = "--max-old-space-size=4096 --max-semi-space-size=64"
-  NODE_ENV = "production"
-  DEBUG = "nuxt:*"
+NODE_VERSION = "22.15.0"
+PNPM_VERSION = "10.10.0"
+NPM_FLAGS = "--no-frozen-lockfile"
+NODE_OPTIONS = "--max-old-space-size=4096 --max-semi-space-size=64"
+NODE_ENV = "production"
+DEBUG = "nuxt:*"
 
 # Handle all routes through the Nuxt server
 [[redirects]]
-  from = "/*"
-  to = "/.netlify/functions/server"
-  status = 200
-  force = true
+from = "/*"
+to = "/.netlify/functions/server"
+status = 200
+force = true
 
 # Handle static assets
 [[redirects]]
-  from = "/_nuxt/*"
-  to = "/_nuxt/:splat"
-  status = 200
-  force = true
+from = "/_nuxt/*"
+to = "/_nuxt/:splat"
+status = 200
+force = true
 
 [[redirects]]
-  from = "/_ipx/*"
-  to = "/_ipx/:splat"
-  status = 200
-  force = true
+from = "/_ipx/*"
+to = "/_ipx/:splat"
+status = 200
+force = true
 
 [functions]
-  directory = "apps/essence/.output/server"
-  node_bundler = "esbuild"
-  external_node_modules = [
-    "@nuxt/nitro",
-    "h3",
-    "ofetch",
-    "unstorage",
-    "firebase-admin",
-    "@nuxt/ui",
-    "@nuxtjs/i18n",
-    "vue",
-    "vue-router",
-    "pinia",
-    "@vueuse/core",
-    "@vueuse/nuxt"
-  ]
-  included_files = ["apps/essence/.output/server/**/*"]
+directory = "apps/essence/.output/server"
+node_bundler = "esbuild"
+external_node_modules = [
+  "@nuxt/nitro",
+  "h3",
+  "ofetch",
+  "unstorage",
+  "firebase-admin",
+  "@nuxt/ui",
+  "@nuxtjs/i18n",
+  "vue",
+  "vue-router",
+  "pinia",
+  "@vueuse/core",
+  "@vueuse/nuxt"
+]
+included_files = [ "apps/essence/.output/server/**/*" ]
 
 [dev]
-  command = "pnpm dev --filter @nextorders/essence"
-  port = 3503
-  targetPort = 3503 
+command = "pnpm dev --filter @nextorders/essence"
+port = 3503
+targetPort = 3503
