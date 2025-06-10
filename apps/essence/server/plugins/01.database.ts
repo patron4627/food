@@ -5,9 +5,8 @@ import { useCreateDatabase } from '../services/db/database'
  * DB init
  */
 export default defineNitroPlugin(async () => {
-  if (!process.env.NUXT_DATABASE_URL) {
-    throw new Error('NUXT_DATABASE_URL is not defined')
+  // Only connect to database if URL is provided
+  if (process.env.NUXT_DATABASE_URL) {
+    useCreateDatabase(process.env.NUXT_DATABASE_URL)
   }
-
-  useCreateDatabase(process.env.NUXT_DATABASE_URL)
 })
