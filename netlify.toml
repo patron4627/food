@@ -1,11 +1,12 @@
 [build]
-  command = "pnpm build --filter @nextorders/essence"
+  command = "cd ../.. && pnpm install && pnpm build --filter @nextorders/essence"
   publish = ".output/public"
   base = "apps/essence"
 
 [build.environment]
   NODE_VERSION = "22.15.0"
   PNPM_VERSION = "10.10.0"
+  NPM_FLAGS = "--no-frozen-lockfile"
 
 # Handle all routes through the Nuxt server
 [[redirects]]
