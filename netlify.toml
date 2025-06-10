@@ -1,0 +1,39 @@
+[build]
+  command = "pnpm build --filter @nextorders/essence"
+  publish = "apps/essence/.output/public"
+  base = "apps/essence"
+
+[build.environment]
+  NODE_VERSION = "22.15.0"
+  PNPM_VERSION = "10.10.0"
+
+# Handle all routes through the Nuxt server
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/server"
+  status = 200
+  force = true
+
+# Handle static assets
+[[redirects]]
+  from = "/_nuxt/*"
+  to = "/_nuxt/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/_ipx/*"
+  to = "/_ipx/:splat"
+  status = 200
+  force = true
+
+[functions]
+  directory = "apps/essence/.output/server"
+  node_bundler = "esbuild"
+  external_node_modules = ["@nuxt/nitro", "h3", "ofetch", "unstorage", "firebase-admin"]
+  included_files = ["apps/essence/.output/server/**/*"]
+
+[dev]
+  command = "pnpm dev --filter @nextorders/essence"
+  port = 3503
+  targetPort = 3503 
